@@ -18,6 +18,7 @@ import pages.LoginPage;
 import java.net.URI;
 import java.net.MalformedURLException;
 
+import java.net.URL;
 import java.time.Duration;
 
 public class BaseTest {
@@ -123,11 +124,26 @@ public class BaseTest {
     public void closeBrowser() {
 //  driver.quit();
     }
-    //throw MalformedURLException
+    public WebDriver lambdaTest() throws MalformedURLException {
+        String username ="jmar138";
+        String authkey = "";
+        String hub = "@hub.lambdatest.com/wd/hub";
+
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setCapability("platform", "Windows 10");
+        caps.setCapability("browserName", "Chrome");
+        caps.setCapability("version", "125");
+        caps.setCapability("resolution", "1024x768");
+        caps.setCapability("build", "TestNG with Java");
+        caps.setCapability("name", this.getClass().getName());
+        caps.setCapability("plugin", "git-testing");
+        return new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub),caps);
+    }
+
     public static WebDriver pickBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
 
-         String gridURL = "http://192.168.55.103:4444";  //replace with your gird url,  localhost:4444
+        String gridURL = "http://192.168.55.103:4444";  //replace with your gird url,  localhost:4444
 //        String gridURL = "http://localhost:4444";  //replace with your gird url,  localhost:4444
 
         switch(browser) {
