@@ -128,7 +128,6 @@ public class BaseTest {
         String username ="jmar138";
         String authkey = "";
         String hub = "@hub.lambdatest.com/wd/hub";
-
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("platform", "Windows 10");
         caps.setCapability("browserName", "Chrome");
